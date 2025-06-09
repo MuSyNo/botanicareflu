@@ -53,10 +53,10 @@ flutter:
   generate: true
 
   assets:
-    - assets/icon/app_icon.png
+    - assets/icon/app_icon.jpg
     - assets/icon/logo.png
 
 flutter_launcher_icons:
   android: true
   ios: false
-  image_path: "assets/icon/app_icon.png"
+  image_path: "assets/icon/app_icon.jpg"

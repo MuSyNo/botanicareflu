@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../app_colors.dart';
-import '../gen_l10n/app_localizations.dart'; // ✅ Use this instead
+import 'package:botanicareflu/gen_l10n/app_localizations.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
