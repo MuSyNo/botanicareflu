@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import '../app_colors.dart';
-import '../gen_l10n/app_localizations.dart'; // ✅ Use this instead
+import 'package:botanicareflu/gen_l10n/app_localizations.dart';
 
 class AccountSettingsScreen extends StatefulWidget {
   const AccountSettingsScreen({super.key});
