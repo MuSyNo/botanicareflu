@@ -9,7 +9,7 @@ import '../gen_l10n/app_localizations.dart';
 import '../app_colors.dart';
 import '../models/soil_health.dart';
 import '../models/crop.dart';
-import 'latest_soil_irrigation_screen.dart'; // ✅ Corrected import path
+import 'latest_soil_irrigation_screen.dart';
 
 class SoilHealthScreen extends StatefulWidget {
   const SoilHealthScreen({super.key});
