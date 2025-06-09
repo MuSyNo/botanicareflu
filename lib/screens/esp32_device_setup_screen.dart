@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 
 import '../app_colors.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../gen_l10n/app_localizations.dart';
 
 class ESP32DeviceSetupScreen extends StatefulWidget {
   const ESP32DeviceSetupScreen({super.key});
