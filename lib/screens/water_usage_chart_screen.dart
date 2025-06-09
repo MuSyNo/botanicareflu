@@ -6,7 +6,7 @@ import 'package:fl_chart/fl_chart.dart';
 
 import '../app_colors.dart';
 import '../models/water_usage_entry.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../gen_l10n/app_localizations.dart';
 
 class WaterUsageChartScreen extends StatefulWidget {
   const WaterUsageChartScreen({super.key});

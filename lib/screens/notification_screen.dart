@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 
 import '../app_colors.dart';
 import '../models/app_notification.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../gen_l10n/app_localizations.dart';
 
 class NotificationScreen extends StatefulWidget {
   const NotificationScreen({super.key});

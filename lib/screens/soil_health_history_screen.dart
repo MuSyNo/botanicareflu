@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 
 import '../models/soil_health.dart';
 import '../app_colors.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../gen_l10n/app_localizations.dart';
 
 class SoilHealthHistoryScreen extends StatefulWidget {
   const SoilHealthHistoryScreen({super.key});

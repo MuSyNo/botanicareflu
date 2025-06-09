@@ -4,7 +4,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:intl/intl.dart';
 
 import '../app_colors.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../gen_l10n/app_localizations.dart';
 
 class IrrigationHistoryScreen extends StatefulWidget {
   const IrrigationHistoryScreen({super.key});
