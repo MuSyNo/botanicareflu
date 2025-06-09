@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "615905767260",
+    "firebase_url": "https://botanicareflu-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "botanicareflu",
+    "storage_bucket": "botanicareflu.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:615905767260:android:ee27cbd257abcf46e55b99",
+        "android_client_info": {
+          "package_name": "com.example.botanicareflu"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6Xsfa9gaTeLu4jrpWGqDxS6jqhEyG8cg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
