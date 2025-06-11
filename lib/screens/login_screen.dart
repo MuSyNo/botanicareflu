@@ -6,7 +6,7 @@ import 'register_screen.dart';
 import 'home_screen.dart';
 import 'reset_password_screen.dart';
 import '../app_colors.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:botanicareflu/gen_l10n/app_localizations.dart';
 
 class LoginScreen extends StatefulWidget {
   final Function(Locale) onLocaleChange;
