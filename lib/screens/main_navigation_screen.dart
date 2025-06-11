@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../gen_l10n/app_localizations.dart';
+import 'package:botanicareflu/gen_l10n/app_localizations.dart';
 
 import 'dashboard_screen.dart';
 import 'account_screen.dart'; // Change to: 'settings_screen.dart' if preferred

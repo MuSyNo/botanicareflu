@@ -6,7 +6,7 @@ import '../screens/irrigation_control_screen.dart';
 import '../screens/soil_health_screen.dart';
 import '../screens/notification_screen.dart';
 import '../screens/settings_screen.dart';
-import '../gen_l10n/app_localizations.dart';
+import 'package:botanicareflu/gen_l10n/app_localizations.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

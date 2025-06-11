@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import '../app_colors.dart';
 import '../main.dart';
-import '../gen_l10n/app_localizations.dart';
+import 'package:botanicareflu/gen_l10n/app_localizations.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});

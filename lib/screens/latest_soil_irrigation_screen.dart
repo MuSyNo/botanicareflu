@@ -6,7 +6,7 @@ import 'package:intl/intl.dart';
 
 import '../models/soil_health.dart';
 import '../app_colors.dart';
-import '../gen_l10n/app_localizations.dart';
+import 'package:botanicareflu/gen_l10n/app_localizations.dart';
 
 class LatestSoilConditionScreen extends StatefulWidget {
   const LatestSoilConditionScreen({super.key});
