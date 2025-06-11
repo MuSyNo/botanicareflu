@@ -7,7 +7,7 @@ import 'package:intl/intl.dart';
 
 import '../screens/add_crop_screen.dart';
 import '../app_colors.dart';
-import '../gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../services/mqtt_service.dart';
 import '../widgets/weather_card.dart';
