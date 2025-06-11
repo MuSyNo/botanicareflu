@@ -24,7 +24,9 @@ SDK path. Create `android/local.properties` and add the following line:
 flutter.sdk=/path/to/flutter
 ```
 
-Then fetch dependencies and generate localization code:
+Run `flutter pub get` to fetch dependencies. Localization files are not
+generated automatically, so run `flutter gen-l10n` afterward to create the
+contents of `lib/gen_l10n`:
 
 ```bash
 flutter pub get
