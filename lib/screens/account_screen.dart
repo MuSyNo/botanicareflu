@@ -9,7 +9,7 @@ class AccountScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser;
-    final t = AppLocalizations.of(context)!; // ✅ Correct usage for gen-l10n
+    final t = AppLocalizations.of(context)!;
 
     return Scaffold(
       backgroundColor: AppColors.offWhite,
