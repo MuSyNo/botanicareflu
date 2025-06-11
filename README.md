@@ -18,7 +18,9 @@ samples, guidance on mobile development, and a full API reference.
 ## Building the App
 
 Before running on Android you need a `local.properties` file with your Flutter
-SDK path. Create `android/local.properties` and add the following line:
+SDK path. Android builds require JDK 11, so make sure it is installed and
+verify the version with `java -version`. Create `android/local.properties` and
+add the following line:
 
 ```
 flutter.sdk=/path/to/flutter

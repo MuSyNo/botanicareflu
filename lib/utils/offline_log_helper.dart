@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -16,7 +17,7 @@ class OfflineLogSync {
     logs.add(jsonEncode(entry));
 
     await prefs.setStringList(_logKey, logs);
-    print("📦 Offline log saved: ${entry['type'] ?? 'unknown'}");
+    debugPrint("📦 Offline log saved: ${entry['type'] ?? 'unknown'}");
   }
 
   /// Syncs all locally saved logs to Firebase and clears the local cache after success.
@@ -24,7 +25,7 @@ class OfflineLogSync {
     final user = FirebaseAuth.instance.currentUser;
     final uid = user?.uid;
     if (uid == null) {
-      print("⚠️ User not authenticated. Cannot sync logs.");
+      debugPrint("⚠️ User not authenticated. Cannot sync logs.");
       return;
     }
 
@@ -32,7 +33,7 @@ class OfflineLogSync {
     final logs = prefs.getStringList(_logKey) ?? [];
 
     if (logs.isEmpty) {
-      print("✅ No offline logs to sync.");
+      debugPrint("✅ No offline logs to sync.");
       return;
     }
 
@@ -43,15 +44,15 @@ class OfflineLogSync {
         final decoded = jsonDecode(logJson);
         if (decoded is Map<String, dynamic>) {
           await ref.push().set(decoded);
-          print("✅ Synced offline log: ${decoded['type'] ?? 'unknown'}");
+          debugPrint("✅ Synced offline log: ${decoded['type'] ?? 'unknown'}");
         }
       } catch (e) {
-        print("❌ Failed to sync a log entry: $e");
+        debugPrint("❌ Failed to sync a log entry: $e");
       }
     }
 
     await prefs.remove(_logKey);
-    print("🧹 Cleared synced offline logs.");
+    debugPrint("🧹 Cleared synced offline logs.");
   }
 
   /// Triggers log sync attempt (e.g., on app start or reconnect).
@@ -59,7 +60,7 @@ class OfflineLogSync {
     try {
       await syncLogs();
     } catch (e) {
-      print("🌐 Unable to sync due to connectivity issue: $e");
+      debugPrint("🌐 Unable to sync due to connectivity issue: $e");
     }
   }
 }

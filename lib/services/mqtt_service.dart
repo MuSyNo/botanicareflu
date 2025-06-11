@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/foundation.dart';
 import 'package:mqtt_client/mqtt_client.dart';
 import 'package:mqtt_client/mqtt_server_client.dart';
 
@@ -17,7 +18,7 @@ class MqttService {
   /// Connect to the MQTT broker
   Future<void> connect({List<String>? topics}) async {
     if (_connected) {
-      print('ℹ️ MQTT is already connected.');
+      debugPrint('ℹ️ MQTT is already connected.');
       return;
     }
 
@@ -38,7 +39,7 @@ class MqttService {
       await client.connect();
       if (client.connectionStatus?.state == MqttConnectionState.connected) {
         _connected = true;
-        print('✅ MQTT connected to $broker');
+        debugPrint('✅ MQTT connected to $broker');
 
         if (topics != null) {
           for (final topic in topics.toSet()) {
@@ -50,11 +51,11 @@ class MqttService {
 
         _bindMessageListener();
       } else {
-        print('❌ MQTT failed to connect: ${client.connectionStatus}');
+        debugPrint('❌ MQTT failed to connect: ${client.connectionStatus}');
         disconnect();
       }
     } catch (e) {
-      print('❌ MQTT connection exception: $e');
+      debugPrint('❌ MQTT connection exception: $e');
       disconnect();
     }
   }
@@ -79,7 +80,7 @@ class MqttService {
         final topic = message.topic;
         final payload = MqttPublishPayload.bytesToStringAsString(recMessage.payload.message);
 
-        print('📩 [MQTT] Received [$topic]: $payload');
+        debugPrint('📩 [MQTT] Received [$topic]: $payload');
         onMessageReceived?.call(topic, payload);
       }
     });
@@ -98,13 +99,13 @@ class MqttService {
   /// Generic publish method
   void publish(String topic, String message) {
     if (!_connected) {
-      print("⚠️ MQTT not connected. Cannot publish to $topic");
+      debugPrint("⚠️ MQTT not connected. Cannot publish to $topic");
       return;
     }
 
     final builder = MqttClientPayloadBuilder()..addString(message);
     client.publishMessage(topic, MqttQos.atMostOnce, builder.payload!);
-    print('📤 [MQTT] Published [$topic]: $message');
+    debugPrint('📤 [MQTT] Published [$topic]: $message');
   }
 
   /// Disconnect from broker
@@ -112,26 +113,26 @@ class MqttService {
     try {
       if (client.connectionStatus?.state == MqttConnectionState.connected) {
         client.disconnect();
-        print('🔌 [MQTT] Disconnected cleanly');
+        debugPrint('🔌 [MQTT] Disconnected cleanly');
       }
     } catch (e) {
-      print('❌ Error during MQTT disconnect: $e');
+      debugPrint('❌ Error during MQTT disconnect: $e');
     } finally {
       _connected = false;
     }
   }
 
   void _onDisconnected() {
-    print('⚠️ [MQTT] Disconnected unexpectedly');
+    debugPrint('⚠️ [MQTT] Disconnected unexpectedly');
     _connected = false;
   }
 
   void _onConnected() {
-    print('✅ [MQTT] Connection established');
+    debugPrint('✅ [MQTT] Connection established');
     _connected = true;
   }
 
   void _onSubscribed(String topic) {
-    print('🔔 [MQTT] Subscribed to $topic');
+    debugPrint('🔔 [MQTT] Subscribed to $topic');
   }
 }

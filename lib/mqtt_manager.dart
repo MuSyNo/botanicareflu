@@ -1,5 +1,6 @@
 import 'package:mqtt_client/mqtt_client.dart';
 import 'package:mqtt_client/mqtt_server_client.dart';
+import 'package:flutter/foundation.dart';
 
 class MQTTManager {
   final MqttServerClient client;
@@ -31,14 +32,14 @@ class MQTTManager {
 
       final status = client.connectionStatus?.state;
       if (status == MqttConnectionState.connected) {
-        print('✅ MQTT connection successful');
+        debugPrint('✅ MQTT connection successful');
         _listenToMessages();
       } else {
-        print('❌ MQTT connection failed: $status');
+        debugPrint('❌ MQTT connection failed: $status');
         disconnect();
       }
     } catch (e) {
-      print('❌ MQTT connection error: $e');
+      debugPrint('❌ MQTT connection error: $e');
       disconnect();
     }
   }
@@ -47,10 +48,10 @@ class MQTTManager {
     try {
       if (client.connectionStatus?.state == MqttConnectionState.connected) {
         client.disconnect();
-        print('🔌 MQTT disconnected');
+        debugPrint('🔌 MQTT disconnected');
       }
     } catch (e) {
-      print('⚠️ Error during disconnect: $e');
+      debugPrint('⚠️ Error during disconnect: $e');
     }
   }
 
@@ -60,12 +61,12 @@ class MQTTManager {
       final payload = builder.payload;
       if (payload != null) {
         client.publishMessage(topic, MqttQos.atMostOnce, payload);
-        print('📤 Published to [$topic]: $message');
+        debugPrint('📤 Published to [$topic]: $message');
       } else {
-        print('⚠️ Cannot publish null payload.');
+        debugPrint('⚠️ Cannot publish null payload.');
       }
     } else {
-      print('⚠️ Cannot publish. MQTT not connected.');
+      debugPrint('⚠️ Cannot publish. MQTT not connected.');
     }
   }
 
@@ -73,12 +74,12 @@ class MQTTManager {
     if (client.connectionStatus?.state == MqttConnectionState.connected) {
       if (_subscribedTopics.add(topic)) {
         client.subscribe(topic, MqttQos.atMostOnce);
-        print('📡 Subscribed to $topic');
+        debugPrint('📡 Subscribed to $topic');
       } else {
-        print('⚠️ Already subscribed to $topic');
+        debugPrint('⚠️ Already subscribed to $topic');
       }
     } else {
-      print('⚠️ Cannot subscribe. MQTT not connected.');
+      debugPrint('⚠️ Cannot subscribe. MQTT not connected.');;
     }
   }
 
@@ -92,13 +93,13 @@ class MQTTManager {
 
         final topic = event.topic;
         final payload = MqttPublishPayload.bytesToStringAsString(msg.payload.message);
-        print('📩 Received [$topic]: $payload');
+        debugPrint('📩 Received [$topic]: $payload');
         onMessage?.call(topic, payload);
       }
     });
   }
 
-  static void _onConnected() => print('✅ Connected to MQTT');
-  static void _onDisconnected() => print('🔌 Disconnected from MQTT');
-  static void _onSubscribed(String topic) => print('🔔 Subscribed to $topic');
+  static void _onConnected() => debugPrint('✅ Connected to MQTT');
+  static void _onDisconnected() => debugPrint('🔌 Disconnected from MQTT');
+  static void _onSubscribed(String topic) => debugPrint('🔔 Subscribed to $topic');
 }
